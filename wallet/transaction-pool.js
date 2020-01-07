@@ -1,46 +1,47 @@
-const Transaction = require('./transaction');
+const Transaction = require("./transaction");
 
-class TransactionPool{
-    constructor(){
-        this.transactionMap = {};
-    }
+class TransactionPool {
+  constructor() {
+    this.transactionMap = {};
+  }
 
-    clear(){
-        this.transactionMap = {};
-    }
+  clear() {
+    this.transactionMap = {};
+  }
 
-    setTransaction(transaction){
-        this.transactionMap[transaction.id] = transaction;
-    }
+  setTransaction(transaction) {
+    this.transactionMap[transaction.id] = transaction;
+  }
 
-    setMap(transactionMap){
-        this.transactionMap = transactionMap;
-    }
-    
-    existingTransaction({ inputAddress }){
-        const transaction = Object.values(this.transactionMap);
+  setMap(transactionMap) {
+    this.transactionMap = transactionMap;
+  }
 
-        return transaction.find(transaction => transaction.input.address  === inputAddress);
-    }
+  existingTransaction({ inputAddress }) {
+    const transaction = Object.values(this.transactionMap);
 
-    validTransactions(){
-        return Object.values(this.transactionMap).filter(
-                    transaction => Transaction.validTransaction(transaction));
-    }
+    return transaction.find(
+      transaction => transaction.input.address === inputAddress
+    );
+  }
 
-    clearBlockchainTransaction({ chain }){
-        for(let i=1; i<chain.length; i++){
-            const block = chain[i];
+  validTransactions() {
+    return Object.values(this.transactionMap).filter(transaction =>
+      Transaction.validTransaction(transaction)
+    );
+  }
 
-            for(let transaction of block.data){
-                if(this.transactionMap[transaction.id]){
-                    delete this.transactionMap[transaction.id];
-                }
-            }
+  clearBlockchainTransaction({ chain }) {
+    for (let i = 1; i < chain.length; i++) {
+      const block = chain[i];
+
+      for (let transaction of block.data) {
+        if (this.transactionMap[transaction.id]) {
+          delete this.transactionMap[transaction.id];
         }
+      }
     }
-
-    
+  }
 }
 
 module.exports = TransactionPool;
