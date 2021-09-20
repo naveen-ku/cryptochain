@@ -50,10 +50,11 @@ This is  full stack web application depicting the decentralized blockchain netwo
     ```
 
 # Snapshots
-
-<img src="images/home.png" width="430" height="300" />
-<img src="images/all-blocks.png" width="430" height="300" />
-<img src="images/conduct-transaction.png" width="430" height="300" />
-<img src="images/transaction-detail.png" width="430" height="300" />
-<img src="images/transaction-pool.png" width="430" height="300" />
-<img src="images/transaction-1.png" width="430" height="300" />
+<p align="center">
+<img src="images/home.png" width="600" height="400" />
+<img src="images/all-blocks.png" width="600" height="400" />
+<img src="images/conduct-transaction.png" width="600" height="400" />
+<img src="images/transaction-detail.png" width="600" height="400" />
+<img src="images/transaction-pool.png" width="600" height="400" />
+<img src="images/transaction-1.png" width="600" height="400" />
+</p>
